@@ -1,7 +1,8 @@
+import 'dotenv/config' 
 import express from "express";
 
 const app=express()
-const port = 3001
+const port = process.env.PORT||3001
 app.use(express.json())
 
 let nameData=[]
@@ -45,7 +46,7 @@ app.delete('/names/:id',(req,res)=>{
         return res.status(404).send("not found")
     }
     nameData.splice(index,1)
-    return res.status(204).send('deleted')
+    return res.status(204).send('deleted ')
 
 })
 app.listen(port,()=>{
